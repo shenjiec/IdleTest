@@ -25,7 +25,7 @@
 
 ### 使用技術
 
-- 後端：ASP.NET MVC (.NET Framework 4.x) 
+- 後端：ASP.NET MVC（C#, .NET Framework 4.x）
 - 資料存取：Entity Framework + EDMX (`Gaming.edmx`)
 - 前端：Razor View + HTML + CSS
 - 狀態暫存：TempData（用於 Controller 間傳遞資料）
