@@ -26,15 +26,21 @@
 ### 使用技術
 
 後端：ASP.NET MVC (.NET Framework 4.x) 
+
 資料存取：Entity Framework + EDMX (`Gaming.edmx`)
+
 前端：Razor View + HTML + CSS
+
 狀態暫存：TempData（用於 Controller 間傳遞資料）
 
 ### 架構說明
 
 Model：定義遊戲中的核心資料結構，例如怪物、精華、轉生等。
+
 View：使用 Razor View 呈現即時資源狀態、怪物資訊與操作介面。
+
 Controller：負責處理遊戲邏輯（如攻擊、升級、轉生），並透過 TempData 傳遞暫存狀態。
+
 Service：封裝進階邏輯，如傷害計算、升級條件判斷、資源獲取等，提升程式可維護性與可讀性。
 
 ---
