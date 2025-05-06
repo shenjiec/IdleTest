@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "登入";
+}
+
+<h2>登入</h2>
+
+<form action="~/Home/Login" method="post">
+    <div class="row mb-4">
+        <label for="UserId" class="col-form-label col-sm-1">帳號</label>
+        <div class="col-sm-10">
+            <input type="text" id="PlayerId" name="PlayerId" class="form-control" required />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label for="Password" class="col-form-label col-sm-1">密碼</label>
+        <div class="col-sm-10">
+            <input type="password" id="Password" name="Password" class="form-control" required />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-sm-11 offset-sm-1">
+            <input type="submit" value="登入" class="btn btn-success" /><span class="text-danger" style="margin-left: 10px">@ViewBag.Message</span>
+        </div>
+    </div>
+</form>
+
+@if (TempData["RegisterMessage"] != null)
+{
+    <script>
+        alert('@TempData["RegisterMessage"]');
+    </script>
+}

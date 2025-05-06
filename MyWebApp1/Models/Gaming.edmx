@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbGamingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="data_Affix">
+          <Key>
+            <PropertyRef Name="AffixId" />
+          </Key>
+          <Property Name="AffixId" Type="int" Nullable="false" />
+          <Property Name="AffixName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AffixDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AffixCost" Type="int" Nullable="false" />
+          <Property Name="AffixUnit" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="data_Material">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+          <Property Name="MaterialName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaterialDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PlayerName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="BestStage" Type="int" Nullable="false" />
+          <Property Name="CurrentStage" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player_Affix">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="AffixId" />
+          </Key>
+          <Property Name="PlayerId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AffixId" Type="int" Nullable="false" />
+          <Property Name="AffixLv" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player_Material">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="PlayerId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbGamingModelStoreContainer">
+          <EntitySet Name="data_Affix" EntityType="Self.data_Affix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="data_Material" EntityType="Self.data_Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player_Affix" EntityType="Self.Player_Affix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player_Material" EntityType="Self.Player_Material" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbGamingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="data_Affix">
+          <Key>
+            <PropertyRef Name="AffixId" />
+          </Key>
+          <Property Name="AffixId" Type="Int32" Nullable="false" />
+          <Property Name="AffixName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AffixDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AffixCost" Type="Int32" Nullable="false" />
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="AffixUnit" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="data_Material">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="MaterialName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaterialDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PlayerName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BestStage" Type="Int32" Nullable="false" />
+          <Property Name="CurrentStage" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player_Affix">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="AffixId" />
+          </Key>
+          <Property Name="PlayerId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AffixId" Type="Int32" Nullable="false" />
+          <Property Name="AffixLv" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player_Material">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="PlayerId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbGamingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="data_Affix" EntityType="Self.data_Affix" />
+          <EntitySet Name="data_Material" EntityType="Self.data_Material" />
+          <EntitySet Name="Player" EntityType="Self.Player" />
+          <EntitySet Name="Player_Affix" EntityType="Self.Player_Affix" />
+          <EntitySet Name="Player_Material" EntityType="Self.Player_Material" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbGamingModelStoreContainer" CdmEntityContainer="dbGamingEntities">
+          <EntitySetMapping Name="data_Affix">
+            <EntityTypeMapping TypeName="dbGamingModel.data_Affix">
+              <MappingFragment StoreEntitySet="data_Affix">
+                <ScalarProperty Name="AffixUnit" ColumnName="AffixUnit" />
+                <ScalarProperty Name="AffixId" ColumnName="AffixId" />
+                <ScalarProperty Name="AffixName" ColumnName="AffixName" />
+                <ScalarProperty Name="AffixDesc" ColumnName="AffixDesc" />
+                <ScalarProperty Name="AffixCost" ColumnName="AffixCost" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_Material">
+            <EntityTypeMapping TypeName="dbGamingModel.data_Material">
+              <MappingFragment StoreEntitySet="data_Material">
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+                <ScalarProperty Name="MaterialDesc" ColumnName="MaterialDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="dbGamingModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="BestStage" ColumnName="BestStage" />
+                <ScalarProperty Name="CurrentStage" ColumnName="CurrentStage" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_Affix">
+            <EntityTypeMapping TypeName="dbGamingModel.Player_Affix">
+              <MappingFragment StoreEntitySet="Player_Affix">
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="AffixId" ColumnName="AffixId" />
+                <ScalarProperty Name="AffixLv" ColumnName="AffixLv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_Material">
+            <EntityTypeMapping TypeName="dbGamingModel.Player_Material">
+              <MappingFragment StoreEntitySet="Player_Material">
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

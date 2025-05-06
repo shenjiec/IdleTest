@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbGamingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="data_Affix">
+    <Key>
+      <PropertyRef Name="AffixId" />
+    </Key>
+    <Property Name="AffixId" Type="Int32" Nullable="false" />
+    <Property Name="AffixName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AffixDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AffixCost" Type="Int32" Nullable="false" />
+    <Property Name="MaterialId" Type="Int32" Nullable="false" />
+    <Property Name="AffixUnit" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="data_Material">
+    <Key>
+      <PropertyRef Name="MaterialId" />
+    </Key>
+    <Property Name="MaterialId" Type="Int32" Nullable="false" />
+    <Property Name="MaterialName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PlayerName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BestStage" Type="Int32" Nullable="false" />
+    <Property Name="CurrentStage" Type="Int32" Nullable="false" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player_Affix">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+      <PropertyRef Name="AffixId" />
+    </Key>
+    <Property Name="PlayerId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AffixId" Type="Int32" Nullable="false" />
+    <Property Name="AffixLv" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player_Material">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+      <PropertyRef Name="MaterialId" />
+    </Key>
+    <Property Name="PlayerId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="dbGamingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="data_Affix" EntityType="Self.data_Affix" />
+    <EntitySet Name="data_Material" EntityType="Self.data_Material" />
+    <EntitySet Name="Player" EntityType="Self.Player" />
+    <EntitySet Name="Player_Affix" EntityType="Self.Player_Affix" />
+    <EntitySet Name="Player_Material" EntityType="Self.Player_Material" />
+  </EntityContainer>
+</Schema>

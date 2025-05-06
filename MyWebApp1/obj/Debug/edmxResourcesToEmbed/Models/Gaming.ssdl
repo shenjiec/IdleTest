@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbGamingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="data_Affix">
+    <Key>
+      <PropertyRef Name="AffixId" />
+    </Key>
+    <Property Name="AffixId" Type="int" Nullable="false" />
+    <Property Name="AffixName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="AffixDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AffixCost" Type="int" Nullable="false" />
+    <Property Name="AffixUnit" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="MaterialId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="data_Material">
+    <Key>
+      <PropertyRef Name="MaterialId" />
+    </Key>
+    <Property Name="MaterialId" Type="int" Nullable="false" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaterialDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PlayerName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="BestStage" Type="int" Nullable="false" />
+    <Property Name="CurrentStage" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player_Affix">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+      <PropertyRef Name="AffixId" />
+    </Key>
+    <Property Name="PlayerId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="AffixId" Type="int" Nullable="false" />
+    <Property Name="AffixLv" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player_Material">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+      <PropertyRef Name="MaterialId" />
+    </Key>
+    <Property Name="PlayerId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaterialId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="dbGamingModelStoreContainer">
+    <EntitySet Name="data_Affix" EntityType="Self.data_Affix" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="data_Material" EntityType="Self.data_Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player_Affix" EntityType="Self.Player_Affix" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player_Material" EntityType="Self.Player_Material" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

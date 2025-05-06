@@ -1,0 +1,84 @@
+﻿@model MyWebApp1.Models.LevelUpModel
+
+@{
+    ViewBag.Title = "Level";
+    Layout = "~/Views/Shared/_LayoutPlayer.cshtml";
+}
+
+<h2 class="text-center mb-4">轉生</h2>
+
+<div class="card shadow-lg border-light mb-4">
+    <div class="card-body text-center">
+        <h5 class="card-title text-primary mb-3">@Model.PlayerName</h5>
+
+        <div class="mb-3">
+            <p class="card-text">
+                <strong>階段:</strong>
+                @Model.CurrentStage.ToString("N0")
+                → <span class="text-danger">@Model.StageInitialValue.ToString("N0")</span>
+            </p>
+        </div>
+
+        <div class="mb-3">
+            <p class="card-text">
+                <strong>轉生等級:</strong>
+                @Model.PlayerLevel.ToString("N0")
+                → <span class="text-success">@((@Model.PlayerLevel + 1).ToString("N0"))</span>
+            </p>
+        </div>
+
+        <div class="mb-3">
+            <p class="card-text">
+                <strong>水晶碎片:</strong>
+                @Model.PlayerCrystal.ToString("N0")
+                <span class="text-success">(+@Model.CrystalVariableParam1.ToString("N0"))</span>
+                <span class="text-primary">(+@Model.CrystalVariableParam2.ToString("N0"))</span>
+                → @Model.CrystalVariate.ToString("N0")
+            </p>
+        </div>
+
+        <div class="mb-3">
+            <p class="card-text">
+                <strong>精華初始值:</strong>
+                @((@Model.EssenceInitialValue1 * (100 + @Model.EssenceInitialValue2) / 100).ToString("N0"))
+                <span class="text-success"> (+@Model.EssenceInitialValue1.ToString("N0"))</span>
+                <span class="text-primary"> (+@((@Model.EssenceInitialValue1 * @Model.EssenceInitialValue2 / 100).ToString("N0")))</span>
+            </p>
+        </div>
+
+        <div class="mb-3">
+            @Html.ActionLink("我要轉生", "LevelUpdate", null, new { @class = "btn btn-outline-primary btn-lg" })
+        </div>
+    </div>
+</div>
+
+@if (TempData["ShowMessage"] != null)
+{
+    var message = TempData["ShowMessage"].ToString();
+    var alertClass = message.Contains("轉生成功") ? "alert-success" : "alert-danger";
+    <div id="message-alert" class="alert @alertClass alert-dismissible fade show" role="alert">
+        @message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script type="text/javascript">
+        setTimeout(function () {
+            var alertElement = document.getElementById("message-alert");
+            if (alertElement) {
+                var bsAlert = new bootstrap.Alert(alertElement);
+                bsAlert.close();
+            }
+        }, 2000);
+    </script>
+}
+
+<p class="text-muted mb-4" style="font-size: 1.1rem; line-height: 1.8;">
+    <span class="fw-bold fs-5 text-secondary">◼ 轉生條件：</span>
+    當前階段需大於轉生後初始階段 100 以上。
+    <br />
+    <span class="fw-bold fs-5 text-secondary">◼ 水晶碎片獲得：</span>
+    水晶碎片為突破階段 x 10，並且每突破 100 階段，水晶碎片總數量將增加 1 倍，例如：100階總數量 x 1，200階總數量 x 2，以此類推。
+    <br />
+    <span class="fw-bold fs-5 text-secondary">◼ 轉生後的精華：</span>
+    精華初始值將為初始階段 x 10。
+</p>

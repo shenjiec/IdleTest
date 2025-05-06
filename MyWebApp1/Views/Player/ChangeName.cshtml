@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ChangeName";
+    Layout = "~/Views/Shared/_LayoutPlayer.cshtml";
+}
+
+<h2>更改暱稱</h2>
+
+<form action="~/Player/ChangeName" method="post">
+    <div class="row mb-4">
+        <label for="Name" class="col-form-label col-sm-2">暱稱</label>
+        <div class="col-sm-10">
+            <input type="text" id="Name" name="name" class="form-control" value="@ViewBag.Name" maxlength="10" required />
+        </div>
+    </div>
+    <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="btn btn-outline-primary" >變更</button>
+    </div>
+</form>

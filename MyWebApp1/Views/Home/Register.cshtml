@@ -1,0 +1,44 @@
+﻿@model MyWebApp1.Models.Register
+
+@{
+    ViewBag.Title = "註冊";
+}
+
+<h2>註冊</h2>
+
+<form action="~/Home/Register" method="post">
+    <div class="row mb-4">
+        @Html.LabelFor(m => m.PlayerId, new { @class = "col-form-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.PlayerId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PlayerId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-4">
+        @Html.LabelFor(m => m.Password, new { @class = "col-form-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-4">
+        @Html.LabelFor(m => m.Password2, new { @class = "col-form-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.PasswordFor(m => m.Password2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-4">
+        @Html.LabelFor(m => m.PlayerName, new { @class = "col-form-label col-sm-3" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.PlayerName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PlayerName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-sm-9 offset-sm-3">
+            <input type="submit" value="註冊" class="btn btn-primary" />
+            <span class="text-danger" style="margin-left: 10px">@ViewBag.Message</span>
+        </div>
+    </div>
+</form>

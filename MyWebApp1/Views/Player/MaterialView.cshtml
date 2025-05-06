@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MyWebApp1.Models.Affix>
+
+@{
+    ViewBag.Title = "Material";
+    Layout = "~/Views/Shared/_LayoutPlayer.cshtml";
+}
+
+<h2 class="text-center mb-4">@ViewBag.MaterialName</h2>
+
+<p class="text-center mb-3">tips: @ViewBag.MaterialDesc</p>
+<p class="text-center mb-3">@(ViewBag.MaterialName + "碎片"): <span class="text-primary">@ViewBag.MaterialAmount.ToString("N0")</span></p>
+
+<div class="row g-3 mt-5">
+    @foreach (var item in Model)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @Html.DisplayFor(modelItem => item.AffixName)&nbsp;&nbsp;
+                        @if (TempData["_AffixId"] != null && Convert.ToInt32(TempData["_AffixId"]) == item.AffixId && TempData["ShowMessage"] != null)
+                        {
+                            var message = TempData["ShowMessage"].ToString();
+                            var alertClass = message.Contains("升級成功") ? "text-success" : "text-danger";
+                            <span id="message-alert" class="@alertClass mx-auto">
+                                @message
+                            </span>
+                        }
+                    </h5>
+                    <p class="card-text text-muted">@Html.DisplayFor(modelItem => item.AffixDesc)</p>
+                    <p class="card-text"><strong>Level:</strong> @item.AffixLv.ToString("N0")</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <div class="text-center">
+                            @Html.ActionLink("+1", "MaterialLvAdd", new { AffixId = item.AffixId, AffixLv = item.AffixLv, terms = 1, MaterialId = item.MaterialId }, new { @class = "btn btn-outline-primary btn-sm" })
+                            <div class="mt-2 text-muted" style="font-size: 11px;">@item.AffixLvAdd1.ToString("N0")</div>
+                        </div>
+                        <div class="text-center">
+                            @Html.ActionLink("+10", "MaterialLvAdd", new { AffixId = item.AffixId, AffixLv = item.AffixLv, terms = 10, MaterialId = item.MaterialId }, new { @class = "btn btn-outline-primary btn-sm" })
+                            <div class="mt-2 text-muted" style="font-size: 11px;">@item.AffixLvAdd10.ToString("N0")</div>
+                        </div>
+                        <div class="text-center">
+                            @Html.ActionLink("+100", "MaterialLvAdd", new { AffixId = item.AffixId, AffixLv = item.AffixLv, terms = 100, MaterialId = item.MaterialId }, new { @class = "btn btn-outline-primary btn-sm" })
+                            <div class="mt-2 text-muted" style="font-size: 11px;">@item.AffixLvAdd100.ToString("N0")</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<script type="text/javascript">
+    setTimeout(function () {
+        var alertElement = document.getElementById("message-alert");
+        if (alertElement) {
+            alertElement.style.display = "none"; //2秒後隱藏訊息
+        }
+    }, 2000);
+
+    window.addEventListener('beforeunload', function () {
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    window.addEventListener('load', function () {
+        var scrollPosition = sessionStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            window.scrollTo(0, scrollPosition);
+        }
+    });
+</script>

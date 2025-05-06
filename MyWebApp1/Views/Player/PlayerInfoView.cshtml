@@ -1,0 +1,116 @@
+﻿@model MyWebApp1.Models.PlayerInfo
+
+@{
+    ViewBag.Title = "PlayerInfo";
+    Layout = "~/Views/Shared/_LayoutPlayer.cshtml";
+}
+
+<h2 class="text-center mb-5">玩家資料</h2>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- 左側區域 -->
+        <div class="col-md-6">
+            <div class="card shadow-lg mb-4 border-light">
+                <h5 class="card-header text-center text-muted">基本資訊</h5>
+                <div class="card-body">
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerId):
+                        <span class="text-primary">@Model.PlayerId</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerName):
+                        <span class="text-primary">@Model.PlayerName</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.CreateDate):
+                        <span class="text-primary">@Model.CreateDate</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerLevel):
+                        <span class="text-primary">@Model.PlayerLevel.ToString("N0")</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.BestStage):
+                        <span class="text-primary">@Model.BestStage.ToString("N0")</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.CurrentStage):
+                        <span class="text-primary">@Model.CurrentStage.ToString("N0")</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerEssence):
+                        <span class="text-primary">@Model.PlayerEssence.ToString("N0")</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerCrystal):
+                        <span class="text-primary">@Model.PlayerCrystal.ToString("N0")</span>
+                    </h6>
+                    @Html.ActionLink("變更暱稱", "ChangeName", null, new { @class = "btn btn-outline-primary btn-sm" })
+                    @Html.ActionLink("變更密碼", "ChangePassword", null, new { @class = "btn btn-outline-primary btn-sm" })
+                </div>
+            </div>
+        </div>
+
+        <!-- 右側區域 -->
+        <div class="col-md-6">
+            <div class="card shadow-lg mb-3 border-light">
+                <h5 class="card-header text-center text-muted">詳細資訊</h5>
+                <div class="card-body">
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerAtk1): 1 +
+                        <span class="text-primary"> @(((@Model.PlayerAtk1 + @Model.PlayerAtk2) * (1 + @Model.PlayerAtk3 * 0.01)).ToString("N0"))</span>
+                        <span class="text-success"> (@Model.PlayerAtk1.ToString("N0"))</span>
+                        <span class="text-danger"> (@Model.PlayerAtk2.ToString("N0"))</span>
+                        <span class="text-warning"> (@Model.PlayerAtk3.ToString("N0")%)</span>
+                    </h6>
+
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerHit1): 100 +
+                        <span class="text-primary"> @(((@Model.PlayerHit1 + @Model.PlayerHit2) * (1 + @Model.PlayerHit3 * 0.01)).ToString("N0"))</span>
+                        <span class="text-success"> (@Model.PlayerHit1.ToString("N0"))</span>
+                        <span class="text-danger"> (@Model.PlayerHit2.ToString("N0"))</span>
+                        <span class="text-warning"> (@Model.PlayerHit3.ToString("N0")%)</span>
+                    </h6>
+
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerCrit1):
+                        <span class="text-primary"> @((@Model.PlayerCrit1 + @Model.PlayerCrit2).ToString("N0"))</span>
+                        <span class="text-success"> (@Model.PlayerCrit1.ToString("N0"))</span>
+                        <span class="text-danger"> (@Model.PlayerCrit2.ToString("N0"))</span>
+                    </h6>
+
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerCritDamage): 50% +
+                        <span class="text-primary">@Model.PlayerCritDamage.ToString("N0")%</span>
+                    </h6>
+
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerFinalDamage):
+                        <span class="text-primary">@Model.PlayerFinalDamage.ToString("N0")%</span>
+                    </h6>
+
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerEssenceAmt):
+                        <span class="text-primary">@Model.PlayerEssenceAmt.ToString("N0")%</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.PlayerCrystalAmt):
+                        <span class="text-primary">@Model.PlayerCrystalAmt.ToString("N0")%</span>
+                    </h6>
+
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.StageInitialValue):
+                        <span class="text-primary">@(@Model.StageInitialValue.ToString("N0"))</span>
+                    </h6>
+                    <h6 class="mb-3">
+                        @Html.DisplayNameFor(m => m.EssenceInitialValue1):
+                        <span class="text-primary">@((@Model.EssenceInitialValue1 * (100 + @Model.EssenceInitialValue2) / 100).ToString("N0"))</span>
+                        <span class="text-danger"> (@Model.EssenceInitialValue1.ToString("N0"))</span>
+                        <span class="text-warning"> (@Model.EssenceInitialValue2.ToString("N0")%)</span>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

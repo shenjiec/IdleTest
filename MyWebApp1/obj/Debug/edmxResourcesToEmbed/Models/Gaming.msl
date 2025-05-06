@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbGamingModelStoreContainer" CdmEntityContainer="dbGamingEntities">
+    <EntitySetMapping Name="data_Affix">
+      <EntityTypeMapping TypeName="dbGamingModel.data_Affix">
+        <MappingFragment StoreEntitySet="data_Affix">
+          <ScalarProperty Name="AffixUnit" ColumnName="AffixUnit" />
+          <ScalarProperty Name="AffixId" ColumnName="AffixId" />
+          <ScalarProperty Name="AffixName" ColumnName="AffixName" />
+          <ScalarProperty Name="AffixDesc" ColumnName="AffixDesc" />
+          <ScalarProperty Name="AffixCost" ColumnName="AffixCost" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="data_Material">
+      <EntityTypeMapping TypeName="dbGamingModel.data_Material">
+        <MappingFragment StoreEntitySet="data_Material">
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="MaterialDesc" ColumnName="MaterialDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Player">
+      <EntityTypeMapping TypeName="dbGamingModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="BestStage" ColumnName="BestStage" />
+          <ScalarProperty Name="CurrentStage" ColumnName="CurrentStage" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Player_Affix">
+      <EntityTypeMapping TypeName="dbGamingModel.Player_Affix">
+        <MappingFragment StoreEntitySet="Player_Affix">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="AffixId" ColumnName="AffixId" />
+          <ScalarProperty Name="AffixLv" ColumnName="AffixLv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Player_Material">
+      <EntityTypeMapping TypeName="dbGamingModel.Player_Material">
+        <MappingFragment StoreEntitySet="Player_Material">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
